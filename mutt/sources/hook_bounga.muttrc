@@ -1,0 +1,12 @@
+# ===============================================================
+# File:                 $HOME/.mutt/sources/hook_bounga.muttrc
+# Purpose:              Setup file for program "mutt"
+# written by:           Nicolas Cavigneaux <nico@bounga.org>
+# Latest change:        Mon Jul  7 14:00:24 CEST 2003
+# Latest user version:  mutt-1.5.4i [2003-03-19]
+# ===============================================================
+set signature="~/.mutt/.signabounga"
+my_hdr From: Nicolas Cavigneaux <nico@bounga.org>
+set record=+outbox
+set pgp_autosign=yes
+set pgp_sign_as=0xF0954C41

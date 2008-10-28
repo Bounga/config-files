@@ -1,0 +1,36 @@
+# ===============================================================
+# File:                 $HOME/.screenrc
+# Purpose:              Personnalize your bash prompt
+# written by:           Nicolas Cavigneaux <nico@bounga.org>
+# Latest change:        Tue Jul  8 20:19:11 CEST 2003
+# Latest user version:  bash-2.05
+# ===============================================================
+# displays the time, username, hostname,
+# working directory, and, if
+# there are background
+# processes, it finds out how
+# much processes there are and
+# prints them. It drops the
+# background process display if
+# there are none. It also has
+# different colors for each
+# element displayed. 
+
+# To use this bash prompt, put,
+# or replace, the PS1= from the
+# included text file into your
+# ~/.bashrc, and add something
+# like this to your
+# ~/.bash_profile if it's not
+# already there:
+#
+# if [ -f ~/.bashrc ]; then
+# source ~/.bashrc
+# fi 
+
+
+function jobcount {
+    jobs | wc -l | tr -d " "
+}
+
+PS1='\[\e[33;1m\][`date +%H:%M`] \[\e[32;1m\]\u\[\e[37;1m\]@\[\e[0;37m\]\h:$(if [ `jobcount` -ne 0 ]; then echo "\[\e[35m\] (bg: `jobcount`)\[\e[37;1m\] \w > \[\e[0m\]"; else echo "\[\e[37;1m\]\w > \[\e[0m\]"; fi)'

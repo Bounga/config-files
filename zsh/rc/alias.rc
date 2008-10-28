@@ -1,0 +1,55 @@
+# -*- shell-script -*-
+
+# ===============================================================
+# File:                 $HOME/.zsh/rc/alias.rc
+# Purpose:              Setup file for "zsh" shell
+# written by:           Nicolas C. <nico@bounga.ath.cx>
+# Latest change:        Mon Jul  7 22:33:43 CEST 2003
+# Latest user version:  zsh-4.0.7
+# Length and size:      55 lines and ca 1,5KB
+# ===============================================================
+
+# I prefer interactive mode
+alias rm="rm -i"
+alias ll="ls -lh"
+alias la="ls -ah"
+alias lsd='ls -ldh *(-/DN)'
+alias lsa='ls -lah'
+alias df="df -h"
+alias du="du -h"
+
+# start mutt with list mailboxes
+[ -x `which mutt` ] && alias mutt="mutt -y"
+
+# do a du -hs on each dir on current path
+alias lsdir="for dir in *;do;if [ -d \$dir ];then;du -hsL \$dir 2>/dev/null;fi;done"
+
+# multi os
+case "$UNAME" in
+	"FreeBSD")
+	;;
+	*)
+		alias ls="ls --color=auto"
+esac
+
+# IPv6 Stuff
+alias netstat6="netstat -A inet6"
+
+# Indent for Wee* projects
+[ -x `which indent` ] && alias indent_cvs="indent -gnu -bli0 -i4 -nut"
+
+# Ping stops after 10 times
+[ -x `which ping` ] && alias ping="ping -c 10"
+
+# Gcc with good debugging
+[ -x `which gcc` ] && alias gcc="gcc -g -W -Wall -ansi"
+
+# Allow use of apt
+[ -x `which apt-get` ] && alias apt-get="sudo apt-get"
+[ -x `which apt-cache` ] && alias apt-cache="sudo apt-cache"
+[ -x `which apt-file` ] && alias apt-file="sudo apt-file"
+[ -x `which auto-apt` ] && alias auto-apt="sudo auto-apt"
+
+# Allow use of dpkg
+alias dpkg="sudo dpkg"
+alias dpkg-reconfigure="sudo dpkg-reconfigure"

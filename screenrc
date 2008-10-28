@@ -1,0 +1,406 @@
+# ===============================================================
+# File:                 $HOME/.screenrc
+# Purpose:              Setup file for program "(GNU) screen"
+# written by:           Nicolas Cavigneaux <nico@bounga.org>
+# Latest change:        Mon Jul  7 00:12:43 CEST 2003
+# Latest user version:  screen-3.09.15 [2003-03-13]
+# ===============================================================
+#
+# ===============================================================
+# SEE ALSO:
+# ===============================================================
+# SCREEN Pages:
+# http://www.guckes.net/screen/
+#
+# Commands List (from the manual to screen-3.7.6):
+# http://www.guckes.net/screen/commands.txt
+#
+# MailingList:
+# http://www.math.fu-berlin.de/~guckes/screen/mail.php3
+# http://www.yahoogroups.com/group/gnu-screen/
+#
+# ===============================================================
+# ENVIRONMENT
+# ===============================================================
+# The DISPLAY variable tells programs which display to use.
+# This mainly affects programs running on the X server.
+# However, when I use screen then I am usually using a terminal -
+# and programs do not need to contact the X server.
+# This results in programs waiting for some timeout when
+# they start up - and this just keeps getting in my way.
+# I therefore unset the DISPLAY variable with this command:
+  unsetenv DISPLAY
+#
+# ===============================================================
+# ESCAPE - the COMMAND CHARACTER
+# ===============================================================
+# escape ^aa  # default
+  escape ^pp  # suggested binding for emacs users
+#
+# ===============================================================
+# STARTUP of programs in an extra window:
+# ===============================================================
+# Uncomment one/some following lines to automatically let
+# SCREEN start some programs in the given window numbers:
+ screen -t SHELL	0 zsh
+ screen -t EMACS	1 emacs -nw
+ screen -t MAIL		2 mutt
+ screen -t NEWS       	3 slrn -n -C -k
+ screen -t IRC		4 irssi
+#
+# ===============================================================
+# VARIABLES - Boolean values (on/off)
+# ===============================================================
+  autodetach            on              # default: on
+  crlf                  off             # default: off
+  deflogin              off             # default: on
+# defsilence            off             # default: off
+  hardcopy_append       on              # default: off
+# nethack               on              # default: off
+  startup_message       off             # default: on
+  vbell                 on              # default: ???
+#
+# ===============================================================
+# TERMCAP and TERMINFO
+# ===============================================================
+ termcap  xterm        'AF=\E[3%dm:AB=\E[4%dm'
+ terminfo xterm        'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+ termcapinfo xterm '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
+#
+# ===============================================================
+# VARIABLES - Number values
+# ===============================================================
+  defscrollback         1000            # default: 100
+  msgminwait            5               # default: 1
+  silencewait           15              # default: 30
+#
+# ===============================================================
+# VARIABLES - Paths and Files (esp. programs)
+# ===============================================================
+# bufferfile:   The file to use for commands
+#               "readbuf" ('<') and  "writebuf" ('>'):
+# bufferfile            $HOME/.screen_exchange
+#
+# hardcopydir:  The directory which contains all hardcopies.
+ hardcopydir           ~/.screen
+#
+# shell:  Default process started in screen's windows.
+# Makes it possible to use a different shell inside screen
+# than is set as the default login shell.  Halleluja! :-)
+  shell                 zsh
+# shell                 bash
+#
+# ===============================================================
+# VARIABLES - Strings
+# ===============================================================
+#
+# some notes on COLOR before explaining its use in
+# the commands caption, hardstatus, and sorendition.
+#
+# COLOR:  colors codes are combinations of
+# [attribute modifier] [color description]
+# the manual talks of "attribute/color modifiers".
+# see the manual, section "STRING ESCAPES".
+#
+# Color table:
+# 0 Black             .    leave color unchanged
+# 1 Red               b    blue
+# 2 Green             c    cyan
+# 3 Brown / yellow    d    default color
+# 4 Blue              g    green           b    bold
+# 5 Purple            k    blacK           B    blinking
+# 6 Cyan              m    magenta         d    dim
+# 7 White             r    red             r    reverse
+# 8 unused/illegal    w    white           s    standout
+# 9 transparent       y    yellow          u    underline
+#
+# note: "dim" is not mentioned in the manual.
+#
+# ===========================================
+# CAPTION - shows a "caption" for the window.
+# ===========================================
+# a "caption" is another line which can show information -
+# in addition to the hardstatus line.
+#
+# use caption to show window list:
+# caption always "%{= kc}%?%-Lw%?%{= kY}%n*%f %t%?(%u)%?%{= kc}%?%+Lw%?"
+#
+# caption always '%{= wb}%50=%n%f %t%{= wb}'
+# this basically just shows the current window number and title
+# on its own; the "%50=" displays it in the middle of the line.
+#
+# caption always "%>%{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?%<"
+# caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+# caption always "%?%F%{.RW}%?%3n %t%? [%h]%?"
+# caption always "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+#
+#  caption always "%{kG}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kG}%?%+Lw%?"
+#
+# "push right border: current time with seconds and current date"
+# caption always "%=%c:%s %Y-%m-%d"
+#
+# Prints the window names and highlight the current window in yellow.
+# On the right there is the time in green and the date in yellow.
+#
+ caption always "%?%{wk}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{wk}%+Lw%? %{gk}%=%c %{yk}%d/%M/%Y"
+#
+# ===============================================================
+#
+# ===============================
+# Hardstatus Line and sorendition
+# ===============================
+#
+# Prints the window names and highlight the current window in yellow.
+# On the right there is the time in green and the date in yellow.
+#
+# hardstatus alwayslastline "%?%{wk}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{wk}%+Lw%? %{gk}%=%c %{yk}%d/%M/%Y"
+
+# "sorendition": set the colors for
+# the "messages" and "text marking"
+# (ie text you mark in copy mode):
+#
+ sorendition gK # green  on black
+#
+# ============================
+# Password
+# ============================
+# # # password SZnBqiqMtfa6k
+# WARNING!!  Do NOT remove the comment
+# if you don't know what this does!
+# read on:
+# this commands sets the *internal*
+# password for the screen session.
+# if this is set then a "lock" command will
+# only let you in to the session after you
+# enter the user's account password and then
+# also the internal password for that session.
+# so this gives additional safety.
+# but if you forget the internal password
+# then you can also forget about the session - ok?!
+#
+# ===============================================================
+# Messages
+# ===============================================================
+# "STRING ESCAPES":
+#  %%      percent sign (the escape character itself)
+#  %a      either 'am' or 'pm' - according to the current time
+#  %A      either 'AM' or 'PM' - according to the current time
+#  %c      current time HH:MM in 24h format
+#  %C      current time HH:MM in 12h format
+#  %d      day number - number of current day
+#  %D      Day's name - the weekday name of the current day
+#  %f      flags of the window
+#  %F      sets %? to true if the window has the focus
+#  %h      hardstatus of the window
+#  %H      hostname of the system
+#  %l      current load of the system
+#  %m      month number
+#  %M      month name
+#  %n      window number
+#  %s      seconds
+#  %t      window title
+#  %u      all other users on this window
+#  %w      all window numbers and names.
+#  %-w     all window numbers up to the current window
+#  %+w     all window numbers after the current window
+#  %W      all window numbers and names except the current one
+#  %y      last two digits of the year number
+#  %Y      full year number
+#
+# ===============================================================
+# "~" stands for the "bell" character
+  activity              "%c -> %n%f %t activity!"
+# pass on the "beep" (CTRL-G) by adding a '~':
+  bell                  "%c -> %n%f %t bell!~"
+#
+# pow_detach_msg:       Message shown when session
+#                       gets power detached.
+  pow_detach_msg        "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+#
+# vbell_msg:            Message shown when the
+#                       "virtual bell" rings.
+  vbell_msg             " *DING* *DONG* "
+#
+# ==============================================================
+#  BIND bind - defaults
+# ==============================================================
+# The following list shows the default bindings:
+#
+# break       ^B b
+# clear       C
+# colon       :
+# copy        ^[ [
+# detach      ^D d
+# digraph     ^V
+# displays    *
+# dumptermcap .
+# fit         F
+# flow        ^F f
+# focus       ^I
+# hardcopy    h
+# help        ?
+# history     { }
+# info        i
+# kill        K k
+# lastmsg     ^M m
+# license     ,
+# log         H
+# login       L
+# meta        x
+# monitor     M
+# next        ^@ ^N sp n
+# number      N
+# only        Q
+# other       ^X
+# pow_break   B
+# pow_detach  D
+# prev        ^H ^P p ^?
+# quit        \
+# readbuf     <
+# redisplay   ^L l
+# remove      X
+# removebuf   =
+# reset       Z
+# screen      ^C c
+# select      " '
+# silence     _
+# split       S
+# suspend     ^Z z
+# time        ^T t
+# title       A
+# vbell       ^G
+# version     v
+# width       W
+# windows     ^W w
+# wrap        ^R r
+# writebuf    >
+# xoff        ^S s
+# xon         ^Q q
+# ^]  paste .
+# -   select -
+# 0   select 0
+# 1   select 1
+# 2   select 2
+# 3   select 3
+# 4   select 4
+# 5   select 5
+# 6   select 6
+# 7   select 7
+# 8   select 8
+# 9   select 9
+# I   login on
+# O   login off
+# ]   paste .
+#
+# ===============================================================
+# Key bindings
+# ===============================================================
+# Remove some default key bindings by binding
+# them to "nothing" (empty right-hand-side):
+#
+# bind .  dumptermcap # default
+  bind .
+# bind ^\ quit        # default
+  bind ^\
+# bind \\ quit        # default
+  bind \\
+# bind h  hardcopy    # default
+# bind h
+# bind ^h ???         # default
+# bind ^h
+# bind }  history     # default
+# bind }
+#
+# And here are the default bind commands if you need them:
+#
+# bind A title
+# bind C clear
+# bind D pow_detach
+# bind F fit
+# bind H log
+# bind I login on
+# bind K kill
+# bind L login
+# bind M monitor
+# bind N number
+# bind O login off
+# bind Q only
+# bind S split
+# bind W width
+# bind X remove
+# bind Z reset
+#
+# ==============================================================
+# KEY BINDING FAQ:
+# ==============================================================
+#      Summary:  Here is a table of the keys
+#      which are not bound by default:
+#      unbound:  -B--E-G--J-L---P-R-TUV--Y-
+#        bound:  A-CD-F-HI-K-MNO-Q-S---WX-Z
+#
+# ==============================================================
+# BIND and the Services:
+# ==============================================================
+# I am using the uppercase letters to start programs/services:
+#
+# the idea:
+# bind <key> <command>
+# this binds the key to start a windows with <command> inside.
+#
+# Bounga - Bounga's Weblog - posting some news about me
+# bind B # unbound by default
+  bind B screen -t 'BLOG' elinks http://bounga.ath.cx
+#
+# MUTT - Email User Agent
+# bind E # unbound by default
+  bind E screen -t 'MAIL' 2 mutt
+#
+# FTP - File Transfer "Program"
+# bind F fit # bound by default !!!
+  bind F screen -t 'FTP' 9 lftp
+#
+# GOOGLE - Web Search Engine
+# bind G # unbound by default
+  bind G screen -t 'GOOGLE' elinks www.google.com
+#
+# IRC - Internet Relay Chat with Irssi
+# bind I login on # bound by default !!!
+  bind I screen -t 'IRC' 4 irssi
+#
+# Movie list
+# bind L # unbound by default
+  bind L screen -t 'MOVIES' elinks http://www.imdb.com/
+#
+# SLRN - newsreader
+  bind S screen -t 'slrn' 3 slrn -n -C -k
+#
+# Emacs - editor
+# bind V # unbound by default
+  bind V screen -t 'EMACS' 1 emacs -nw
+
+# ===============================================================
+# BIND Examples:
+# ===============================================================
+# You can also paste the values of
+# SCREEN's environment variables:
+# bind E stuff $EMAIL
+# bind U stuff $URL
+# bind I stuff $ICQ
+#
+# ===============================================================
+# BINDKEY:
+# ===============================================================
+# Use the function keys F7 and F8
+# to cycle backwards/forwards in
+# the list of existing windows:
+  bindkey -k k7 prev
+  bindkey -k k8 next
+#
+# NumPad keybindings:
+# ^[Oo /      resize =
+# ^[Oj *      resize max
+# ^[Om -      resize -2
+# ^[Ok +      resize +2
+# ^[OM Enter
+#
+# EOF

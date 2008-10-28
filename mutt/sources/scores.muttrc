@@ -1,0 +1,35 @@
+# ===============================================================
+# File:                 $HOME/.mutt/sources/scores.muttrc
+# Purpose:              Setup file for program "mutt"
+# written by:           Nicolas Cavigneaux <nico@bounga.org>
+# Latest change:        Mon Jul  7 14:00:24 CEST 2003
+# Latest user version:  mutt-1.5.4i [2003-03-19]
+# ===============================================================
+#
+# Enable scoring
+set score = yes
+#
+# Points when flag
+set score_threshold_flag=9999
+#
+# Points when read
+set score_threshold_read=0
+#
+# Points when deleted
+set score_threshold_delete=-1
+#
+# All the messages have 10 points by default
+score	'~A'						10
+#
+# Messages that are not directly for me
+score	'~p'						10
+score	'~C nico@bounga.ath.cx'				10
+#
+# My messages
+score	'~P'						15
+#
+# best friends
+score	'~f toto@plop.org'				40
+#
+# spams
+score	'~f I_am_a_spammer@plouf.com'			=0

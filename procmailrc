@@ -1,0 +1,120 @@
+# ===============================================================
+# File:                 $HOME/.procmailrc
+# Purpose:              Setup file for program "procmail"
+# written by:           Nicolas Cavigneaux <nico@bounga.org>
+# Latest change:        Mon Jul  7 21:39:37 CEST 2003
+# Latest user version:  procmail-3.22 [2001-09-10]
+# ===============================================================
+#
+# ===============================================================
+# SEE ALSO:
+# ===============================================================
+# PROCMAIL Pages:
+# http://www.procmail.org/
+#
+# MailingList:
+# http://www.procmail.org/era/lists.html
+# ===============================================================
+
+PATH        = /bin:/usr/bin:/usr/local/bin:/${HOME}/bin
+SHELL       = /bin/bash
+DEFAULT	    = $HOME/Mail/mbox
+MAILDIR     = ${HOME}/Mail
+LOGFILE     = ${HOME}/.procmail.log
+LOGABSTRACT = "no"
+VERBOSE     = "off"
+
+#### Kills the duplicates ####################
+:0 Wh: msgid.lock
+| formail -D 8192 .msgid.cache
+
+##### Attachements that we don't want #############
+:0 HB:
+* .*name=.*\.(scr|vba|vb|bat|cmd|pif|exe).*
+spams
+
+:0 B
+* ^[0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=][0-9a-zA-Z=]
+* ! "^Content-Type: text/plain; charset=iso-8859-1$"
+* "^Content-Type: application/octet-stream;$"
+* "^Content-Transfer-Encoding: base64$"
+spams
+
+############### Mailing lists #############
+
+######### Mutt lists ###########
+#
+:0 
+* ^TO_.*mutt-announce
+NL/mutt
+
+:0 
+* ^TO_.*mutt-users-fr
+ML/mutt
+#
+######### End of mutt lists #######
+
+
+########## Debian lists ###########
+#
+:0 H
+* ^TO_.*debian-(announce|news|security-announce)@lists.debian.org
+NL/debian
+#
+########## End of Debian lists ######
+
+
+########## Misc Mailing-Lists #####
+#
+:0 H
+* .*bugtraq.*
+ML/bugtraq
+#
+######### End of misc ######
+
+
+########## NewsLetters #############
+#
+# O'Reilly list
+:0
+* ^From:.*oreilly
+NL/oreilly
+#
+########## End of NewsLetters ####
+
+#################### spamassassin is enable now ###################
+:0fw
+| spamassassin
+
+# When a mail is considered spam by spamassassin it goes to 
+# the "spams" mailbox
+:0
+* ^X-Spam-Status: Yes
+spams
+######
+
+
+###### Internal mails ############
+
+:0
+* ^From:.*@your_host.tld
+local
+####
+#
+#
+###### My email addresses #####
+
+:0
+* ^TO_.*nico@bounga.org
+Bounga
+
+:0
+* ^TO_.*other@domain.tld
+Other
+
+###### All mails that were not sort goes to
+###### the main mailbox "Bounga"
+:0
+Bounga
+
+## EOF ##

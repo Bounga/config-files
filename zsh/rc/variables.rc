@@ -1,0 +1,32 @@
+# ===============================================================
+# File:                 $HOME/.zsh/rc/variables.rc
+# Purpose:              Setup file for "zsh" shell
+# written by:           Nicolas C. <nico@bounga.ath.cx>
+# Latest change:        Mon Jul  7 22:33:43 CEST 2003
+# Latest user version:  zsh-4.0.7
+# Length and size:      32 lines and ca 825B
+# ===============================================================
+
+# French locales
+LC_ALL=fr_FR
+
+export LC_ALL
+
+PATH=$PATH:~/.zsh/bin:~/bin
+export PATH 
+
+[ -d /usr/share/info ] && export INFO_PATH="$INFO_PATH;/usr/share/info"
+
+[ -d /usr/share/man ] && export INFO_PATH="$MAN_PATH;/usr/share/man"
+
+# emacs
+if [ -x `which emacs` ]; then 
+	export EDITOR="nano"
+	export VISUAL="emacs -nw"
+fi
+
+# more
+if [ -x `which more` ]; then
+	export PAGER=more
+#	export LESS="-ir"
+fi

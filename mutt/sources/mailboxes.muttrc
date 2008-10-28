@@ -1,0 +1,21 @@
+# ===============================================================
+# File:                 $HOME/.mutt/sources/mailboxes.muttrc
+# Purpose:              Setup file for program "mutt"
+# written by:           Nicolas Cavigneaux <nico@bounga.org>
+# Latest change:        Mon Jul  7 14:00:24 CEST 2003
+# Latest user version:  mutt-1.5.4i [2003-03-19]
+# ===============================================================
+# Mailboxes to watch for new mail #########################################
+#
+#	mailboxes <path1> [ <path2> ... ]
+#
+mailboxes =Nico
+mailboxes =local
+mailboxes =Bounga
+mailboxes =NL/mutt
+mailboxes =NL/debian
+#
+# Name of the mailinglists
+#
+lists mutt-
+subscribe mutt-

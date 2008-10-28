@@ -1,0 +1,7 @@
+Some configuration files for popular softwares
+
+---
+
+For more information see [Project homepage](http://www.bitbucket.org/Bounga/config-files/)
+
+Problems, comments, and suggestions are welcome on the [ticket system](http://www.bitbucket.org/Bounga/config-files/tickets/newtickets/new)

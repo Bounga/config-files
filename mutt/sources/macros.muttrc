@@ -1,0 +1,20 @@
+# ===============================================================
+# File:                 $HOME/.mutt/sources/macros.muttrc
+# Purpose:              Setup file for program "mutt"
+# written by:           Nicolas Cavigneaux <nico@bounga.org>
+# Latest change:        Mon Jul  7 14:00:24 CEST 2003
+# Latest user version:  mutt-1.5.4i [2003-03-19]
+# ===============================================================
+#
+# Index mode
+macro 	index "\cb"    	"|urlview\n"  # view URLs
+macro 	index "\em"    	"<change-folder>=ML/\t\t"   # go to ML folder
+macro 	index "\eh"    	"<change-folder>=/\t\t\t"   # go to the root
+macro 	index "\eS"    	"<change-folder>=spams/\t\t\n"   # go to spams folder
+macro	index "S"	"|/usr/bin/razor-report" # Do a spam report
+#
+# Mode Pager :
+macro 	pager "\em"    "<change-folder>=ML/\t\t"   # go to ML folder
+macro 	pager "\eh"    "<change-folder>=/\t\t\t"   # root
+macro 	pager "\eS"    "<change-folder>=spams/\t\t\n"   # Spams
+macro 	pager "\cb"    "|urlview\n"       # view URLs

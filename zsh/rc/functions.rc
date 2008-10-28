@@ -1,0 +1,46 @@
+# -*- shell-script -*-
+
+# ===============================================================
+# File:                 $HOME/.zsh/rc/functions.rc
+# Purpose:              Setup file for "zsh" shell
+# written by:           Nicolas C. <nico@bounga.ath.cx>
+# Latest change:        Mon Jul  7 22:33:43 CEST 2003
+# Latest user version:  zsh-4.0.7
+# Length and size:      46 lines and ca 1,4KB
+# ===============================================================
+
+# Trace libraries load by first argument (ELF only)
+# (note: exactly same result with ldd)
+tracelib () {
+	LD_TRACE_LOADED_OBJECTS=1 $1
+}
+
+# debian upgrade
+# if the first argument is void, proceed local upgrade
+# else, send command via ssh
+# assume user have sufficient permission for upgrade
+# without interaction
+#
+# Note:
+# i use sudo with the follow lines
+# 
+# Cmnd_Alias      DEBIAN  = /usr/bin/apt-get, /usr/bin/dpkg
+# asyd            ALL = PASSWD: ALL, NOPASSWD: DEBIAN
+upgrade () {
+    if [ -z $1 ] ; then
+        sudo apt-get update
+        sudo apt-get -u dist-upgrade
+    else
+        ssh $1 sudo apt-get update
+        # ask before the upgrade
+        local dummy
+        ssh $1 sudo apt-get --no-act upgrade
+        echo -n "Process the upgrade ?"
+        read -q dummy
+        if [[ $dummy == "y" ]] ; then
+            ssh $1 sudo apt-get -u upgrade --yes
+        fi
+    fi
+}
+
+compdef _hosts upgrade

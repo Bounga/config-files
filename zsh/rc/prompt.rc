@@ -1,0 +1,64 @@
+# -*- shell-script -*-
+
+# ===============================================================
+# File:                 $HOME/.zsh/rc/prompt.rc
+# Purpose:              Setup file for "zsh" shell
+# written by:           Nicolas C. <nico@bounga.ath.cx>
+# Latest change:        Mon Jul  7 22:33:43 CEST 2003
+# Latest user version:  zsh-4.0.7
+# Length and size:      64 lines and ca 1,6KB
+# ===============================================================
+
+# for have colors
+autoload -U colors
+colors
+
+local host_color domain_color path_color date_color date_format date host cpath end xtermcolor stats status_color
+
+# define your colors here (i hate white background)
+host_color="green"
+domain_color="yellow"
+path_color="red"
+date_color="white"
+status_color="lightgrey"
+
+# Format
+date_format="%H:%M"
+
+date="%{$fg[$date_color]%}%D{$date_format}"
+host="%{$fg[$host_color]%}%n%{$reset_color%}@%{$fg[$domain_color]%}%m"
+cpath="%B%{$fg[$path_color]%}%/%b"
+end="%{$reset_color%}"
+
+# permit parameter expansion, command substitution and arithmetic expansion 
+# in prompt
+setopt prompt_subst
+
+precmd () { 
+	local buffer load
+	load=(${$(< /proc/loadavg)})
+	LOADAVG="$load[1] $load[2]"
+	buffer=(${$(free)})
+	MEM="$((100 * $buffer[16] / $buffer[8]))%%"
+	if [[ $buffer[19] != 0 ]]; then
+		MEM="$MEM $((100 * $buffer[20] / $buffer[19]))%%"
+	fi
+}
+
+stats="%{$fg[$status_color]%}[\$LOADAVG - \$MEM]"
+
+PS1="$date ($host$end) : $cpath
+$end%% "
+
+RPS1="$stats%{$reset_color%}"
+
+export PS1 RPS1
+
+# function use to toggle RPS1 (which is very ugly for copy/paste)
+function rmrps1 () {
+	RPS1=""
+}
+
+function rps1 () {
+	RPS1="$stats%{$reset_color%}"
+}

@@ -1,0 +1,85 @@
+# ===============================================================
+# File:                 $HOME/.mutt/sources/colors.muttrc
+# Purpose:              Setup file for program "mutt"
+# written by:           Nicolas Cavigneaux <nico@bounga.org>
+# Latest change:        Mon Jul  7 14:00:24 CEST 2003
+# Latest user version:  mutt-1.5.4i [2003-03-19]
+# ===============================================================
+#
+#color definitions
+#
+# ===============================================================
+# Handling of scored messages (~/.mutt/sources/score.muttrc):
+# ===============================================================
+
+color index brightwhite black '~n 10-' # messages > 4 in bold
+color index cyan black ~p		# messages to me in cyan
+color index brightcyan black '~F !'	# flaggued messages
+color index magenta black '~b "Nicolas Cavigneaux"' # messages that talks about me
+#
+# ================================================================
+# Headers coloration:
+   color header   	cyan 		black	"Delivemagenta-To: "	
+   color header       	green		black	"date: "
+   color header       	green		black	"from: "
+   color header       	green	   	black	"sender: "
+   color header       	magenta      	black	"organi[sz]ation: "
+   color header       	magenta      	black	"x-editor: "
+   color header       	magenta   	black	"x-mailer: "
+   color header       	magenta		black	"user-agent: "
+   color header       	magenta      	black	"message-id:"
+   color header       	magenta      	black	"in-reply-to: "
+   color header       	magenta      	black	"references: "
+   color header		brightgreen    	black	"followup-to: "
+   color header 	brightgreen    	black	"mail-followup-to: "
+   color header       	white    	black	"reply-to: "
+   color header       	brightcyan      black	"priority: high"
+   color header       	brightcyan      black	"priority: urgent"
+   color header       	brightcyan 	black	"subject: "
+   color header 	green          	black	"^bcc: [^ ]"
+   color header 	green          	black	"^cc: [^ ]"
+   color header 	green          	black	"^to: [^ ]"
+   color header		white 		black	"Received: "
+   color header   	white 		black	"Return-Path: "
+   color header   	magenta  		black	"X-Operating-System: "
+#
+# ==========================================================================
+#  Deflected ("Resent") Mails
+# ==========================================================================
+   color header   	cyan 		black     "X-Resent-By: "
+   color header   	cyan 		black     "X-Resent-For: "
+   color header   	cyan 		black     "X-Resent-To: "
+#
+# =========================================================================
+# Other things
+# =========================================================================
+color hdrdefault 	magenta 	black 
+color quoted1 		cyan		black 
+color quoted2 		cyan		black 
+color signature 	red		black 
+color indicator 	brightcyan 	magenta 
+color error 		red	 	black 
+color status 		cyan 		blue
+color tree 		magenta 	black  
+color tilde 		magenta 	black 
+color message 		brightcyan 	black 
+color markers 		brightcyan 	black 
+color attachment 	brightmagenta 	black 
+color search 		default 	green      
+color underline 	brightgreen 	black 
+
+color body 	magenta 	black "(ftp|http|https)://[^ ]+" # point out URLs
+color body 	magenta 	black [-a-z_0-9.]+@[-a-z_0-9.]+    # e-mail addresses
+color body 	brightyellow black " [;=:8]-*[])>]"       # :-) etc...
+color body	brightblue   black " [;=:8]-*[(<|/\]"     # :-( etc...
+color body	brightdefault black    "\\*[[:alnum:]]+\\*"     # *bold*
+color body 	brightdefault black    "_[[:alnum:]]+_"     # _underline_
+color body 	brightgreen  black "^(gpg: )?Good signature"
+color body 	brightred    black "^(gpg: )?Bad signature"
+color body 	red          black "^(gpg: )?warning:"
+#
+# =============================================================================
+# attributes when using a mono terminal
+# =============================================================================
+#mono header underline ^(From|Subject):
+mono quoted bold

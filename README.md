@@ -2,7 +2,7 @@
 
 ## Get the source
 
-$ hg clone http://bitbucket.org/Bounga/config-files
+  $ hg clone http://bitbucket.org/Bounga/config-files
 
 ## Other
 

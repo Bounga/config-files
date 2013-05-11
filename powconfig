@@ -1,0 +1,2 @@
+# Help Pow to find rbenv and use it
+export PATH=/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:$PATH

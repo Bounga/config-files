@@ -1,0 +1,37 @@
+[ui]
+username = Your Name <your@email.org>
+ssh = ssh -C
+ignore = ~/.hgignore
+
+[extensions]
+color =
+hgext.patchbomb =
+# prompt = ~/.hg/hg-prompt/prompt.py
+pager =
+hgflow = /usr/local/Cellar/hg-flow/0.3/hgflow.py
+
+[pager]
+pager = LESS='FSRX' less
+
+[color]
+status.modified = blue bold underline
+status.added = green bold
+status.removed = red bold blue_background
+status.deleted = cyan bold underline
+status.unknown = magenta bold underline
+status.ignored = black bold
+diff.diffline = bold
+diff.extended = cyan bold
+diff.file_a = red bold
+diff.file_b = green bold
+diff.hunk = magenta
+diff.deleted = red
+diff.inserted = green
+diff.changed = white
+diff.trailingwhitespace = bold red_background
+
+[email]
+method = /usr/sbin/sendmail
+
+[diff]
+git = true

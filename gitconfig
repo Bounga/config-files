@@ -1,0 +1,13 @@
+[user]
+	name = Your name
+	email = your@email.org
+[color]
+  ui = true
+[merge]
+  tool = opendiff
+[apply]
+  whitespace = strip
+[core]
+	excludesfile = /Users/nico/.gitignore
+[branch]
+  autosetuprebase = always

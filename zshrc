@@ -2,8 +2,8 @@
 # File:                 $HOME/.zshrc
 # Purpose:              Setup file for "zsh" shell
 # written by:           Nicolas Cavigneaux <nico@bounga.org>
-# Latest change:        Mon Jul  7 22:33:43 CEST 2003
-# Latest user version:  zsh-4.0.7
+# Latest change:        Sat Mai 11 12:15:43 CEST 2013
+# Latest user version:  zsh-5.0.2
 # ===============================================================
 #
 # ===============================================================
@@ -16,33 +16,43 @@
 # MailingList:
 # http://zsh.sunsite.dk/Arc/mlist.html
 #
+# Oh My Zsh
+# https://github.com/robbyrussell/oh-my-zsh
+#
 # ===============================================================
 
-# My functions (don't forget to modify fpath before call compinit !!)
-fpath=($HOME/.zsh/functions $fpath)
+# This config file is intended for use with Oh My Zsh framework
 
-# in order to have many completion function run compinstall !
+# Path to your oh-my-zsh configuration.
+export ZSH=$HOME/.oh-my-zsh
 
-# I like colors in term
-eval `dircolors $HOME/.zsh/colors`
+# Set to the name theme to load.
+# Look in ~/.oh-my-zsh/themes/
+export ZSH_THEME="clean"
 
-autoload -U zutil
-autoload -U compinit
-autoload -U complist
+# Set to this to use case-sensitive completion
+# export CASE_SENSITIVE="true"
 
-# Activation
-compinit
+# Comment this out to disable weekly auto-update checks
+# export DISABLE_AUTO_UPDATE="true"
 
-# Resource files
-for file in $HOME/.zsh/rc/*.rc; do
-	source $file
-done
+# Uncomment following line if you want to disable colors in ls
+# export DISABLE_LS_COLORS="true"
 
-if [ -f ~/TODO ]
-then
-	echo "Don't forget : "
-	echo 
-	cat ~/TODO
-fi
+# Uncomment following line if you want to disable autosetting terminal title.
+# export DISABLE_AUTO_TITLE="true"
 
-umask 027
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(brew bundler capistrano coffee extract gem git git-extras git-flow github history mercurial nanoc node npm osx pip pow rails3 rbenv rsync ruby ssh-agent sublime themes thor)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+export EDITOR="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl -w"
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+cdpath=( ~/Code )

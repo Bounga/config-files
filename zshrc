@@ -2,8 +2,8 @@
 # File:                 $HOME/.zshrc
 # Purpose:              Setup file for "zsh" shell
 # written by:           Nicolas Cavigneaux <nico@bounga.org>
-# Latest change:        Sat Mai 11 12:15:43 CEST 2013
-# Latest user version:  zsh-5.0.2
+# Latest change:        Fri Mar 21 09:53:23 CET 2014
+# Latest user version:  zsh-5.0.5
 # ===============================================================
 #
 # ===============================================================
@@ -47,12 +47,14 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew bundler capistrano coffee extract gem git git-extras git-flow github history mercurial nanoc node npm osx pip pow rails3 rbenv rsync ruby ssh-agent sublime themes thor)
+plugins=(brew rbenv bundler capistrano coffee colored-man extract gem git git-extras git-flow github gitignore history mercurial nanoc node npm osx postgres pow rails rsync ruby screen ssh-agent sublime themes thor)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export EDITOR="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl -w"
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/var/rbenv/shims:/usr/local/var/rbenv/bin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
+fpath=(/usr/local/share/zsh-completions $fpath)
 cdpath=( ~/Code )

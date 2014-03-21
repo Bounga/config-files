@@ -6,9 +6,9 @@ ignore = ~/.hgignore
 [extensions]
 color =
 hgext.patchbomb =
-# prompt = ~/.hg/hg-prompt/prompt.py
 pager =
-hgflow = /usr/local/Cellar/hg-flow/0.3/hgflow.py
+hgflow = /usr/local/Cellar/hg-flow/0.9.6/lib/python2.7/site-packages/hgflow.py
+rebase =
 
 [pager]
 pager = LESS='FSRX' less

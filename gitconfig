@@ -11,3 +11,6 @@
 	excludesfile = /Users/nico/.gitignore
 [branch]
   autosetuprebase = always
+[push]
+  default = simple
+

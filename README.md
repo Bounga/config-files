@@ -14,4 +14,4 @@ If you want to contribute you should take a look at [Ticket Guidelines](http://s
 
 ---
 
-Copyright (c) 2013 Nicolas Cavigneaux, released under the MIT license
+Copyright (c) 2014 Nicolas Cavigneaux, released under the MIT license

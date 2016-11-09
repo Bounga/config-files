@@ -2,4 +2,12 @@
 vendor/bundle
 .tags
 .tags_sorted_by_file
+TAGS
+GPATH
+GRTAGS
+GTAGS
 .powenv
+stdout
+*~
+\#*\#
+.\#*

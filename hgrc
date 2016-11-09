@@ -1,14 +1,26 @@
 [ui]
-username = Your Name <your@email.org>
+username = Nicolas Cavigneaux <nico@bounga.org>
 ssh = ssh -C
 ignore = ~/.hgignore
+editor = emacsclient -c
 
 [extensions]
 color =
 hgext.patchbomb =
 pager =
-hgflow = /usr/local/Cellar/hg-flow/0.9.6/lib/python2.7/site-packages/hgflow.py
+flow = /usr/local/opt/hg-flow/libexec/hgflow.py
 rebase =
+hgext.extdiff =
+
+[extdiff]
+# add new command called ediff, runs emacs diff
+cmd.ediff = sh
+opts.ediff = -c 'if [ -d $0 ]; then emacsclient --eval "(ediff-directories \"$0\" \"$1\" \"\")"; else emacsclient --eval "(ediff-files \"$0\" \"$1\")"; fi'
+
+cmd.opendiff = opendiff-w
+
+[flow]
+autoshelve = true
 
 [pager]
 pager = LESS='FSRX' less

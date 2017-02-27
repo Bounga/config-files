@@ -11,6 +11,7 @@ pager =
 flow = /usr/local/opt/hg-flow/libexec/hgflow.py
 rebase =
 hgext.extdiff =
+strip=
 
 [extdiff]
 # add new command called ediff, runs emacs diff

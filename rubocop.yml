@@ -38,6 +38,10 @@ Style/MultilineMethodCallIndentation:
 Style/Alias:
   EnforcedStyle: prefer_alias_method
 
+# Enforce usage of %i() to create array of symbols
+Style/SymbolArray:
+  Enabled: true
+
 # # Most readable form.
 # Style/AlignHash:
 #   EnforcedHashRocketStyle: table

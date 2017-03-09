@@ -12,6 +12,7 @@ flow = /usr/local/opt/hg-flow/libexec/hgflow.py
 rebase =
 hgext.extdiff =
 strip=
+shelve=
 
 [extdiff]
 # add new command called ediff, runs emacs diff

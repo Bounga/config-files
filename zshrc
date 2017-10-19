@@ -5,7 +5,7 @@ export ZSH=/Users/nico/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="clean"
+ZSH_THEME="refined"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -53,7 +53,7 @@ plugins=(rbenv brew bundler capistrano colored-man docker-compose emacs extract 
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/TeX/texbin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:./node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/TeX/texbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 fpath=(/usr/local/share/zsh-completions $fpath)
 cdpath=( ~/Code ~/Synbioz/Code )

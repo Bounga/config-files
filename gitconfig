@@ -16,3 +16,5 @@
 	autosetuprebase = always
 [push]
 	default = simple
+[magit]
+	hideCampaign = true

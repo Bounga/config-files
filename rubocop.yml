@@ -27,11 +27,11 @@ Style/DocumentationMethod:
   Enabled: true
 
 # Multi-line method calls should use trailing dot
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: trailing
 
 # Classic indentation rather than indenting to caller
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 # Enforce usage of alias_method over alias since it's more flexible and predictable
@@ -83,5 +83,5 @@ Lint/ShadowingOuterLocalVariable:
   Enabled: false
 
 # Calling the argument `other` in all cases makes no sense.
-Style/OpMethod:
+Naming/BinaryOperatorParameter:
   Enabled: false

@@ -49,7 +49,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(rbenv brew bundler capistrano colored-man docker-compose emacs extract gem git git-extras git-flow github gitignore history mercurial nanoc node npm osx postgres pow rails rsync ruby ssh-agent terminalapp themes thor tmux zsh-navigation-tools)
+plugins=(rbenv brew bundler colored-man-pages docker-compose emacs extract gem git git-extras git-flow github gitignore history mercurial nanoc node npm osx postgres pow rails rsync ruby ssh-agent themes thor tmux zsh-navigation-tools)
 
 # User configuration
 

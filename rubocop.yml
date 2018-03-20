@@ -83,5 +83,5 @@ Lint/ShadowingOuterLocalVariable:
   Enabled: false
 
 # Calling the argument `other` in all cases makes no sense.
-Naming/BinaryOperatorParameter:
+Naming/BinaryOperatorParameterName:
   Enabled: false

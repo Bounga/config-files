@@ -13,6 +13,7 @@ rebase =
 hgext.extdiff =
 strip=
 shelve=
+prompt = ~/.hg/prompt/prompt.py
 
 [extdiff]
 # add new command called ediff, runs emacs diff

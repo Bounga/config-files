@@ -1,1 +1,4 @@
 progress=false
+//npm.synbioz.com/:_authToken=lJxsG94oDEN2BpHGkCuATE0YszUuHWMzlfdq9wCiL630R4gvhqHsAKUrn+5XUAZT
+registry=https://npm.synbioz.com/
+always-auth=true

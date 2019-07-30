@@ -1,5 +1,5 @@
-AllCops:
-  TargetRubyVersion: 2.5
+# AllCops:
+#   TargetRubyVersion: 2.5
 
 # Commonly used screens these days easily fit more than 80 characters.
 Metrics/LineLength:

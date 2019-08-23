@@ -13,3 +13,4 @@ stdout
 \#*\#
 .\#*
 .docker-volumes
+node_modules
